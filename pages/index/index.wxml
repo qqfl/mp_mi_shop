@@ -1,0 +1,109 @@
+<!--index.wxml-->
+<view class='navBg' wx:if="{{mengShow}}" bindtap='hideMeng'></view>
+<view class='header'>
+    <view class='search'>
+        <image class='logo' src='../../images/logo.png'></image>
+        <view>
+            <icon type='search' size='30rpx'></icon>
+            <input placeholder='搜索商品名称'></input>
+        </view>
+        <image class='user' src='../../images/user.png'></image>
+    </view>
+    <view class='nav'>
+        <scroll-view scroll-x class='list' scroll-left='{{scrollLeft}}' scroll-with-animation='true'>
+            <view wx:for="{{typeList}}" wx:key='' wx:for-index='idx' bindtap='menuClickStyle' data-idx='{{idx}}' class='{{clickTypeNum==idx?"act":""}}'>{{item}}</view>
+        </scroll-view>
+    </view>
+    <view class='navList {{aniStyle}}'>
+        <view class='navListTit'>全部</view>
+        <view class='navListCon'>
+            <text wx:for="{{typeList}}" wx:key='' wx:for-index='idx' bindtap='menuClickStyle' data-idx='{{idx}}' class='{{clickTypeNum==idx?"act":""}}'>{{item}}</text>
+        </view>
+    </view>
+    <image class='arrow {{arrowStyle}}' src='../../images/arrow.png' bindtap='showMeng'></image>
+</view>
+<!-- 响应二级菜单滚动的8个内容区 -->
+<scroll-view style='height:100vh' scroll-y scroll-top='{{scrollTop}}' class='body {{clickTypeNum==0?clickTypeFX:""}} {{oldBodyNum==0?oldBodyFX:""}}'>
+    <swiper circular class='swiper1' indicator-dots="{{indicatorDots}}" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}">
+        <block wx:key='' wx:for="{{imgUrls}}">
+            <swiper-item>
+                <image src="{{item}}" class="slide-image" />
+            </swiper-item>
+        </block>
+    </swiper>
+    <view class='type'>
+        <image wx:key='' wx:for='{{boxMenu1}}' src='{{item}}'></image>
+    </view>
+    <view class='type'>
+        <image wx:key='' wx:for='{{boxMenu2}}' src='{{item}}'></image>
+    </view>
+    <view class='line'></view>
+    <view class='col1 c'>
+        <view class='fl'>
+            <image src='{{boxMenuBottom[0]}}'></image>
+        </view>
+        <view class='fr'>
+            <image src='{{boxMenuBottom[1]}}'></image>
+            <image src='{{boxMenuBottom[2]}}'></image>
+        </view>
+    </view>
+    <view class='line'></view>
+    <image class='col2' src='{{model1.tit1}}'></image>
+    <view class='line'></view>
+    <image class='col3' src='{{model1.tit2}}'></image>
+    <view class='col4'>
+        <view wx:key='' wx:for='{{model1.product}}'>
+            <image src='{{item.d1}}'></image>
+            <text class='t1'>{{item.d2}}</text>
+            <text class='t2'>{{item.d3}}</text>
+            <text class='t3'>{{item.d4}}<text class='t4'>{{item.d5}}</text></text>
+        </view>
+    </view>
+    <view class='line'></view>
+    <image class='col2' src='{{model2.tit1}}'></image>
+    <view class='line'></view>
+    <image class='col3' src='{{model2.tit2}}'></image>
+    <view class='col4'>
+        <view wx:key='' wx:for='{{model2.product}}'>
+            <image src='{{item.d1}}'></image>
+            <text class='t1'>{{item.d2}}</text>
+            <text class='t2'>{{item.d3}}</text>
+            <text class='t3'>{{item.d4}}<text class='t4'>{{item.d5}}</text></text>
+        </view>
+    </view>
+    <view class='col5'>更多小米电视产品 ></view>
+    <view class='line'></view>
+    <image class='col2' src='{{model3.tit1}}'></image>
+    <view class='line'></view>
+    <image class='col3' src='{{model3.tit2}}'></image>
+    <view class='col4'>
+        <view wx:key='' wx:for='{{model3.product}}'>
+            <image src='{{item.d1}}'></image>
+            <text class='t1'>{{item.d2}}</text>
+            <text class='t2'>{{item.d3}}</text>
+            <text class='t3'>{{item.d4}}<text class='t4'>{{item.d5}}</text></text>
+        </view>
+    </view>
+    <image class='aboutMi' src='https://cdn.cnbj0.fds.api.mi-img.com/b2c-mimall-media/bbb5bac8089d890338b5bf8ff742cbbc.png?thumb=1&w=720&h=106'></image>
+</scroll-view>
+<scroll-view style='height:100vh' scroll-y scroll-top='{{scrollTop}}' class='body {{clickTypeNum==1?clickTypeFX:""}} {{oldBodyNum==1?oldBodyFX:""}}'>
+    <image wx:key='' wx:for='{{mobileActivity}}' mode='widthFix' class='w100' src='{{item}}'></image>
+</scroll-view>
+<scroll-view style='height:100vh' scroll-y scroll-top='{{scrollTop}}' class='body {{clickTypeNum==2?clickTypeFX:""}} {{oldBodyNum==2?oldBodyFX:""}}'>
+    <image wx:key='' wx:for='{{loveday}}' mode='widthFix' class='w100' src='{{item}}'></image>
+</scroll-view>
+<scroll-view style='height:100vh' scroll-y scroll-top='{{scrollTop}}' class='body {{clickTypeNum==3?clickTypeFX:""}} {{oldBodyNum==3?oldBodyFX:""}}'>
+    <image wx:key='' wx:for='{{ai}}' mode='widthFix' class='w100' src='{{item}}'></image>
+</scroll-view>
+<scroll-view style='height:100vh' scroll-y scroll-top='{{scrollTop}}' class='body {{clickTypeNum==4?clickTypeFX:""}} {{oldBodyNum==4?oldBodyFX:""}}'>
+    <image wx:key='' wx:for='{{tv}}' mode='widthFix' class='w100' src='{{item}}'></image>
+</scroll-view>
+<scroll-view style='height:100vh' scroll-y scroll-top='{{scrollTop}}' class='body {{clickTypeNum==5?clickTypeFX:""}} {{oldBodyNum==5?oldBodyFX:""}}'>
+    <image wx:key='' wx:for='{{mpc}}' mode='widthFix' class='w100' src='{{item}}'></image>
+</scroll-view>
+<scroll-view style='height:100vh' scroll-y scroll-top='{{scrollTop}}'class='body {{clickTypeNum==6?clickTypeFX:""}} {{oldBodyNum==6?oldBodyFX:""}}'>
+    <image wx:key='' wx:for='{{life}}' mode='widthFix' class='w100' src='{{item}}'></image>
+</scroll-view>
+<scroll-view style='height:100vh' scroll-y scroll-top='{{scrollTop}}' class='body {{clickTypeNum==7?clickTypeFX:""}} {{oldBodyNum==7?oldBodyFX:""}}'>
+    <image wx:key='' wx:for='{{electric}}' mode='widthFix' class='w100' src='{{item}}'></image>
+</scroll-view>
